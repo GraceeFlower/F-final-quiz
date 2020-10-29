@@ -1,15 +1,17 @@
 @import '../../style/extend';
 
-.student-list {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+.trainee-list {
+  @extend %member-list;
 
   li {
     @extend %member-item;
   }
 }
 
-.add-student-btn {
+.add-trainee-btn {
   @extend %add-btn;
+}
+
+.add-trainee-input {
+  @extend %add-input;
 }

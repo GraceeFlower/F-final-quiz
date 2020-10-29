@@ -1,10 +1,12 @@
 import axios from 'axios';
-
-const BASIC_URL = 'http://localhost:8080';
+import BASIC_URL from './basic';
 
 const TraineeApi = {
   getUngroupedTrainees: async () =>
     axios.get(`${BASIC_URL}/trainees?grouped=false`).then((res) => res.data),
+
+  createTrainee: async (name) =>
+    axios.post(`${BASIC_URL}/trainees`, { name }).then((res) => res.data),
 };
 
 export default TraineeApi;

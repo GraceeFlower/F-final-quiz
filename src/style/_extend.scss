@@ -1,11 +1,25 @@
 @import 'variables';
 
+%member-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 0;
+}
+
 %add-btn {
   padding: 10px 15px;
   margin-left: 10px;
   height: fit-content;
   background-color: #fff;
   border: 1px solid $gray;
+}
+
+%add-input {
+  margin: 0 10px;
+  padding: 0 5px;
+  height: 30px;
+  outline-color: $primary-color;
 }
 
 %member-item {

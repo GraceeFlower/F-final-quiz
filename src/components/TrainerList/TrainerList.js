@@ -9,6 +9,7 @@ class TrainerList extends Component {
 
     this.state = {
       trainers: [],
+      isCreating: false,
     };
   }
 
@@ -17,24 +18,47 @@ class TrainerList extends Component {
     this.setState({ trainers });
   }
 
+  handleClick = () => {
+    this.setState({ isCreating: true });
+  };
+
+  handleKeyPressEnter = async (e) => {
+    if (e.key === 'Enter') {
+      try {
+        const newTrainer = await TrainerApi.createTrainer(e.target.value);
+        this.setState((state) => ({
+          trainees: state.trainees.concat(newTrainer),
+          isCreating: false,
+        }));
+      } catch (err) {
+        alert('姓名不能为空!');
+      }
+    }
+  };
+
   render() {
-    const { trainers } = this.state;
+    const { trainers, isCreating } = this.state;
 
     return (
       <div>
         <h2 className="list-header">讲师列表</h2>
-        <ul className="student-list">
+        <ul className="trainer-list">
           {trainers.map((trainer) => (
             <li key={trainer.id}>
               {trainer.id}. {trainer.name}
             </li>
           ))}
-          <input
-            type="button"
-            className="add-teacher-btn"
-            value="+添加讲师"
-            onClick={this.handleClick}
-          />
+          {isCreating ? (
+            <input
+              type="text"
+              className="add-trainer-input"
+              onKeyPress={this.handleKeyPressEnter}
+            />
+          ) : (
+            <button type="button" className="add-trainer-btn" onClick={this.handleClick}>
+              +添加讲师
+            </button>
+          )}
         </ul>
       </div>
     );
