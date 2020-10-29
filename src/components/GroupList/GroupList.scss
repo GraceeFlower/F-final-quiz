@@ -1,0 +1,18 @@
+@import '../../style/mixin';
+
+.trainee-group {
+  margin-bottom: 20px;
+}
+
+.group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.group-header input[type='button'] {
+  @include operate-btn;
+  padding: 10px 20px;
+  height: fit-content;
+}
