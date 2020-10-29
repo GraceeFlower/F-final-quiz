@@ -1,5 +1,7 @@
 # Setup
 
+(Min)
+
 ## Start Server
 
 Server started at `http://localhost:1234` . Parcel is used for bundler.
