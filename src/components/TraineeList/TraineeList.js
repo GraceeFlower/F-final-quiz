@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import './TraineeList.scss';
-import TraineeApi from '../../api/trainee';
+import TraineeApi from '../../api/traineeList';
 
 class TraineeList extends Component {
   constructor(props) {
@@ -12,9 +12,21 @@ class TraineeList extends Component {
     };
   }
 
-  componentDidMount = async () => {
+  async componentDidMount() {
     const trainees = await TraineeApi.getUngroupedTrainees();
-    this.setState(trainees);
+    this.setState({ trainees });
+  }
+
+  handleClick = (e) => {
+    e.target.type = 'text';
+    e.target.value = '';
+  };
+
+  handleKeyPressEnter = (e) => {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      e.target.type = 'button';
+    }
   };
 
   render() {
@@ -26,12 +38,16 @@ class TraineeList extends Component {
         <ul className="student-list">
           {trainees.map((trainee) => (
             <li key={trainee.id}>
-              {trainee.id}.{trainee.name}
+              {trainee.id}. {trainee.name}
             </li>
           ))}
-          <button type="button" className="add-student-btn">
-            +添加学生
-          </button>
+          <input
+            type="button"
+            className="add-student-btn"
+            value="+添加学生"
+            onClick={this.handleClick}
+            onKeyPress={this.handleKeyPressEnter}
+          />
         </ul>
       </div>
     );
