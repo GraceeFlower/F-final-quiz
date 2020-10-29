@@ -1,0 +1,9 @@
+@import 'variables';
+
+@mixin operate-btn() {
+  padding: 10px;
+  border: none;
+  background-color: $primary-color;
+  color: #fff;
+  outline: none;
+}

@@ -36,6 +36,14 @@ class TraineeList extends Component {
     }
   };
 
+  handleDelete = async (e) => {
+    const traineeId = e.target.parentElement.innerText.split('.')[0];
+    await TraineeApi.deleteTrainee(traineeId);
+    this.setState((state) => ({
+      trainees: state.trainees.filter((t) => t.id.toString() !== traineeId),
+    }));
+  };
+
   render() {
     const { trainees, isCreating } = this.state;
 
@@ -46,6 +54,9 @@ class TraineeList extends Component {
           {trainees.map((trainee) => (
             <li key={trainee.id}>
               {trainee.id}. {trainee.name}
+              <button type="button" className="delete-btn" onClick={this.handleDelete}>
+                x
+              </button>
             </li>
           ))}
           {isCreating ? (

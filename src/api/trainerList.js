@@ -7,6 +7,10 @@ const TrainerApi = {
 
   createTrainer: async (name) =>
     axios.post(`${BASIC_URL}/trainers`, { name }).then((res) => res.data),
+
+  deleteTrainer: async (id) => {
+    axios.delete(`${BASIC_URL}/trainers/${id}`).then((res) => res.data);
+  },
 };
 
 export default TrainerApi;

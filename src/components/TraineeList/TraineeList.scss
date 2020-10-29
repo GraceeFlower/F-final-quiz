@@ -1,10 +1,24 @@
 @import '../../style/extend';
+@import '../../style/mixin';
 
 .trainee-list {
   @extend %member-list;
 
   li {
+    position: relative;
     @extend %member-item;
+
+    .delete-btn {
+      display: none;
+      @extend %delete-btn;
+      @include operate-btn;
+      z-index: 10;
+    }
+
+    &:hover > .delete-btn,
+    .delete-btn:hover {
+      display: inline-block;
+    }
   }
 }
 

@@ -27,13 +27,21 @@ class TrainerList extends Component {
       try {
         const newTrainer = await TrainerApi.createTrainer(e.target.value);
         this.setState((state) => ({
-          trainees: state.trainees.concat(newTrainer),
+          trainers: state.trainers.concat(newTrainer),
           isCreating: false,
         }));
       } catch (err) {
         alert('姓名不能为空!');
       }
     }
+  };
+
+  handleDelete = async (e) => {
+    const trainerId = e.target.parentElement.innerText.split('.')[0];
+    await TrainerApi.deleteTrainer(trainerId);
+    this.setState((state) => ({
+      trainers: state.trainers.filter((t) => t.id.toString() !== trainerId),
+    }));
   };
 
   render() {
@@ -46,6 +54,9 @@ class TrainerList extends Component {
           {trainers.map((trainer) => (
             <li key={trainer.id}>
               {trainer.id}. {trainer.name}
+              <button type="button" className="delete-btn" onClick={this.handleDelete}>
+                x
+              </button>
             </li>
           ))}
           {isCreating ? (
