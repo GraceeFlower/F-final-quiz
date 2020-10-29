@@ -1,0 +1,15 @@
+@import '../../style/extend';
+
+.student-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  li {
+    @extend %member-item;
+  }
+}
+
+.add-student-btn {
+  @extend %add-btn;
+}

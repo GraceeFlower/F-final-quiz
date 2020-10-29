@@ -1,0 +1,14 @@
+@import 'variables';
+
+%add-btn {
+  padding: 10px 15px;
+  height: fit-content;
+  background-color: #fff;
+  border: 1px solid $gray;
+}
+
+%member-item {
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: $light-gray;
+}
