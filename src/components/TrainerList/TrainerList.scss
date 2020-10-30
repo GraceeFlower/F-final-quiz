@@ -1,6 +1,7 @@
 @import '../../style/extend';
 @import '../../style/mixin';
 
+// TODO GTB-知识点: + sass语法正确使用
 .trainer-list {
   @extend %member-list;
 
@@ -21,7 +22,7 @@
     }
   }
 }
-
+// TODO GTB-工程实践: - 因为没有提前公用组件导致重复CSS (eg .add-trainee-btn)
 .add-trainer-btn {
   @extend %add-btn;
 }

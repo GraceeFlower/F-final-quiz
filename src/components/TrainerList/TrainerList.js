@@ -22,6 +22,7 @@ class TrainerList extends Component {
     this.setState({ isCreating: true });
   };
 
+  // TODO GTB-工程实践: - 因为没有提前公用组件导致大量重复代码
   handleKeyPressEnter = async (e) => {
     if (e.key === 'Enter') {
       try {

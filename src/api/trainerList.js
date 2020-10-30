@@ -1,6 +1,6 @@
 import axios from 'axios';
 import BASIC_URL from './basic';
-
+// TODO GTB-工程实践: - 文件名命名不合适，这里也不只是是get trainerList
 const TrainerApi = {
   getUngroupedTrainers: async () =>
     axios.get(`${BASIC_URL}/trainers?grouped=false`).then((res) => res.data),
